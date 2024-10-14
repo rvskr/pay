@@ -143,7 +143,7 @@ h2 {
 }
 
 .theme-toggle {
-    background-color: #4CAF50;
+    background-color: #2a282867;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -154,7 +154,7 @@ h2 {
 }
 
 .theme-toggle:hover {
-    background-color: #45a049;
+    background-color: #4b4e4b;
 }
 
 /* Стили для блока контактов */
