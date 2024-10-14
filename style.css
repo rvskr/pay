@@ -309,6 +309,20 @@ h2 {
     width: auto;
     height: auto;
 }
+.qr-button {
+    background-color: #2a282867;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.qr-button:hover {
+    background-color: #4b4e4b;
+}
 
 /* Медиа-запрос для мобильных устройств (ширина экрана до 768px) */
 @media (max-width: 768px) {
@@ -316,3 +330,4 @@ h2 {
         max-width: 80%; /* На мобильных устройствах - 100% ширины экрана */
     }
 }
+
