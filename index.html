@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Оплата</title>
+    <link rel="stylesheet" href="style.css" id="theme-link">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+</head>
+<body class="dark-theme">
+
+<div class="container">
+    <div class="settings">
+        <!-- Переключатель темы -->
+        <button id="theme-toggle" class="theme-toggle">Светлая тема</button>
+
+        <!-- Переключатель языков -->
+        <div class="language-switcher">
+            <img src="img/ru.svg" alt="Русский" class="flag" onclick="switchLanguage('ru')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" alt="Українська" class="flag" onclick="switchLanguage('ua')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" class="flag" onclick="switchLanguage('en')">
+        </div>
+    </div>
+
+    <h2 id="payment-methods-title">Выберите способ оплаты</h2>
+    
+    <!-- Уведомление о копировании с базовым текстом -->
+    <div id="notification" class="notification">Хорошего вам настроения ^^ </div>
+    
+    <!-- Монобанк -->
+    <div class="payment-method">
+        <a href="https://send.monobank.ua/AaWsPtYJK3" target="_blank">
+            <img src="img/mono.png" alt="Монобанк">
+        </a>
+        <div class="payment-details">
+            <p><strong id="monobank-title">Монобанк</strong></p>
+            <p><span id="monobank-card-label">Номер карты:</span> <span id="monobank-number">4441 1110 6846 4548</span></p>
+            <p><span id="monobank-recipient-label">Имя получателя:</span> <span id="monobank-recipient">Роман Р.</span></p>
+        </div>
+        <button class="copy-button" onclick="copyText('monobank-number')">Копировать</button>
+    </div>
+
+    <!-- Приватбанк -->
+    <div class="payment-method">
+        <a href="https://www.privat24.ua/send/dp8a1" target="_blank">
+            <img src="img/privat24.png" alt="Приватбанк">
+        </a>
+        <div class="payment-details">
+            <p><strong id="privatbank-title">Приватбанк</strong></p>
+            <p><span id="privatbank-card-label">Номер карты:</span> <span id="privatbank-number">4149 4390 2762 3200</span></p>
+            <p><span id="privatbank-recipient-label">Имя получателя:</span> <span id="privatbank-recipient">Роман Р.</span></p>
+        </div>
+        <button class="copy-button" onclick="copyText('privatbank-number')">Копировать</button>
+    </div>
+
+    <!-- А-Банк -->
+    <div class="payment-method">
+        <a href="https://abank24.page.link/M3WjC" target="_blank">
+            <img src="img/abank.webp" alt="А-Банк">
+        </a>
+        <div class="payment-details">
+            <p><strong id="abank-title">А-Банк</strong></p>
+            <p><span id="abank-account-label">Номер счета:</span> <span id="abank-number">4323 3473 7699 5392</span></p>
+            <p><span id="abank-recipient-label">Имя получателя:</span> <span id="abank-recipient">Роман Р.</span></p>
+        </div>
+        <button class="copy-button" onclick="copyText('abank-number')">Копировать</button>
+    </div>
+
+    <!-- Binance -->
+    <div class="payment-method">
+
+            <img src="img/binance.png" alt="Binance">
+        </a>
+        <div class="payment-details">
+            <p><strong id="binance-title">Binance TRC20 (USDT) </strong></p>
+            <p><span id="binance-wallet-label">TRC20:</span> <span id="binance-wallet">TDuGEsovbirWiN2RgVnNWfUmc9doCTC18c</span></p>
+        </div>
+        <button class="copy-button" onclick="copyText('binance-wallet')">Копировать</button>
+    </div>
+
+        <!-- Binance Pay -->
+        <div class="payment-method">
+            <a href="https://app.binance.com/qr/dplk301e6768b4e44413a7c276b28c03920a" target="_blank">
+                <img src="img/binance.png" alt="Binance">
+            </a>
+            <div class="payment-details">
+                <p><strong id="binance-title">Binance Pay</strong></p>
+                <p><span id="binance-recipient-label">ID:</span> <span id="binance-recipient">97301846</span></p>
+            </div>
+            <button class="copy-button" onclick="copyText('binance-recipient')">Копировать</button>
+        </div>
+
+<!-- Блок контактов -->
+<div class="contact-info">
+    <h2>Контакты</h2>
+    <p>
+        Номер телефона: 
+        <a href="tel:+380988609833" id="phone-number">+380988609833</a>
+    </p>
+    <p>
+        Telegram: 
+        <a href="https://t.me/r_vskr" id="telegram-link">r_vskr</a>
+    </p>
+</div>
+
+    
+</div>
+
+<!-- Подключаем JavaScript -->
+<script src="script.js"></script>
+<script src="translate.js"></script> <!-- Подключаем файл с переводами -->
+
+</body>
+</html>

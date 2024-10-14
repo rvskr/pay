@@ -1,0 +1,267 @@
+/* Основные стили для body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Тёмная тема */
+.dark-theme {
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+.dark-theme .container {
+    background-color: #3b3b3b; /* Изменен цвет для тёмной темы */
+    color: #ffffff;
+    border-color: #4a4a4a;
+}
+
+/* Светлая тема */
+.light-theme {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.light-theme .container {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ddd;
+}
+
+/* Стили для контейнера */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Стили заголовка */
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+}
+
+/* Стили для каждого метода оплаты */
+.payment-method {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.payment-method:hover {
+    background-color: #767b75;
+}
+
+.payment-method img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.payment-details {
+    flex: 1;
+}
+
+.payment-details p {
+    margin: 5px 0;
+    word-break: break-all;
+}
+
+/* Стили для кнопок копирования */
+.copy-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #45a049;
+}
+
+/* Уведомление */
+.notification {
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: #dff0d8;
+    border: 1px solid #3c763d;
+    color: #3c763d;
+    border-radius: 5px;
+    height: 40px; /* Фиксированная высота для уведомлений */
+    line-height: 40px; /* Вертикальное центрирование текста */
+    visibility: visible; /* По умолчанию показываем базовое уведомление */
+}
+
+.dark-theme .notification {
+    background-color: #4b4b4b;
+    border-color: #666;
+    color: #cccccc;
+}
+
+.light-theme .notification {
+    background-color: #dff0d8;
+    border-color: #3c763d;
+    color: #3c763d;
+}
+
+/* Стили для переключателей темы и языка */
+.settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+.flag {
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.theme-toggle {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: #45a049;
+}
+
+/* Стили для блока контактов */
+.contact-info {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Цвет фона блока с контактами */
+    transition: background-color 0.3s ease;
+}
+
+.contact-info h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+/* Стили для ссылок в контактной информации */
+.contact-info a {
+    color: #4CAF50; /* Цвет для ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+.contact-info a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Стили для блока контактов в тёмной теме */
+.dark-theme .contact-info {
+    background-color: #3b3b3b; /* Цвет фона для тёмной темы */
+    border-color: #4a4a4a; /* Цвет границы для тёмной темы */
+}
+
+.dark-theme .contact-info h2,
+.dark-theme .contact-info p {
+    color: #ffffff; /* Цвет текста для заголовка и параграфов в тёмной теме */
+}
+
+/* Мобильная оптимизация */
+
+/* Для экранов меньше 600px */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        text-align: center; /* Центрирование текста в body */
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+
+    .payment-method {
+        flex-direction: column;
+        align-items: center; /* Центрирование элементов внутри метода оплаты */
+        padding: 10px;
+    }
+
+    .payment-method img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .payment-details p {
+        font-size: 14px;
+        text-align: center; /* Центрирование текста в деталях оплаты */
+    }
+
+    .copy-button {
+        margin-top: 10px;
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    .settings {
+        flex-direction: column;
+        align-items: center; /* Центрирование элементов настроек */
+        gap: 10px;
+    }
+
+    .flag {
+        width: 25px;
+        height: 15px;
+    }
+
+    .theme-toggle {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    .notification {
+        font-size: 14px;
+    }
+
+    .contact-info {
+        text-align: center; /* Центрирование текста в блоке контактов */
+    }
+}
