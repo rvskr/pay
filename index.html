@@ -13,6 +13,7 @@
     <div class="settings">
         <!-- Переключатель темы -->
         <button id="theme-toggle" class="theme-toggle">Светлая тема</button>
+        <button class="qr-button" onclick="showQRCode('img/qr-code.png')">Показать QR-код</button>
 
         <!-- Переключатель языков -->
         <div class="language-switcher">
@@ -101,6 +102,14 @@
         Telegram: 
         <a href="https://t.me/r_vskr" id="telegram-link">r_vskr</a>
     </p>
+</div>
+
+<!-- Модальное окно для QR-кодов -->
+<div id="qr-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <img id="qr-image" src="" alt="QR-код">
+    </div>
 </div>
 
     

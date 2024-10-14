@@ -88,5 +88,30 @@ function showNotification(message) {
     }, 5000);
 }
 
+// Функция для показа модального окна с QR-кодом
+function showQRCode(imageSrc) {
+    const modal = document.getElementById('qr-modal');
+    const qrImage = document.getElementById('qr-image');
+
+    qrImage.src = imageSrc; // Устанавливаем источник изображения QR-кода
+    modal.style.display = 'flex'; // Отображаем модальное окно
+}
+
+// Функция для закрытия модального окна
+function closeModal() {
+    const modal = document.getElementById('qr-modal');
+    modal.style.display = 'none'; // Скрываем модальное окно
+}
+
+// Закрытие модального окна при нажатии вне его области
+window.onclick = function(event) {
+    const modal = document.getElementById('qr-modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
+
 // Инициализация перевода при загрузке
 initializeTranslations();
+
