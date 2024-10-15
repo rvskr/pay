@@ -1,13 +1,13 @@
 // Переменная для текущего языка
 let currentLanguage = 'ru'; // Установите язык по умолчанию
-let baseNotificationText = ''; // Базовое уведомление будет инициализироваться позже
+let baseNotificationText = 'Иконки банков кликабельные, хорошего вам настроения ^^'; // Базовое уведомление
+let notificationTimeout; // Таймер для временного уведомления
 
 // Функция получения перевода
 function getTranslation(lang, key) {
-    return translations[lang][key] || key;
+    return translations[lang][key] || key; // Получаем перевод или возвращаем ключ, если перевод отсутствует
 }
 
-// Инициализация перевода при загрузке
 function initializeTranslations() {
     const body = document.body;
 
@@ -30,6 +30,13 @@ function initializeTranslations() {
 
     document.getElementById('payment-methods-title').innerText = getTranslation(currentLanguage, 'paymentMethods');
 
+    // Обновляем текст в блоке контактов
+    document.getElementById('contact-title').innerText = getTranslation(currentLanguage, 'contact');
+    document.getElementById('phone-label').innerText = getTranslation(currentLanguage, 'phoneLabel');
+    document.getElementById('phone-number').innerText = getTranslation(currentLanguage, 'phoneLink');
+    document.getElementById('telegram-label').innerText = getTranslation(currentLanguage, 'telegramLabel');
+    document.getElementById('telegram-link').innerText = getTranslation(currentLanguage, 'telegramLink');
+
     // Обновляем текст кнопок копирования
     const copyButtons = document.querySelectorAll('.copy-button');
     copyButtons.forEach(button => {
@@ -44,7 +51,8 @@ function initializeTranslations() {
 
     // Обновляем базовое уведомление
     baseNotificationText = getTranslation(currentLanguage, 'bankIconsClickable');
-    document.getElementById('notification').innerText = baseNotificationText;
+    document.getElementById('notification').innerText = baseNotificationText; // Устанавливаем базовое уведомление
+    document.getElementById('notification').style.visibility = 'visible'; // Показываем базовое уведомление
 }
 
 // Переключение темы
@@ -70,39 +78,34 @@ function switchLanguage(lang) {
 
     // Уведомление о смене языка
     showNotification(getTranslation(lang, 'languageSelected') + ' ' + lang);
-
-    // Через 5 секунд возвращаем базовое уведомление
-    setTimeout(function() {
-        document.getElementById('notification').innerText = baseNotificationText;
-        document.getElementById('notification').style.visibility = 'visible';
-    }, 3000);
 }
+
 // Копирование текста в буфер обмена
 function copyText(elementId) {
     const text = document.getElementById(elementId).innerText;
     
     navigator.clipboard.writeText(text).then(function() {
-        baseNotificationText = getTranslation(currentLanguage, 'bankIconsClickable');
-        showNotification(getTranslation(currentLanguage, 'copySuccess'));
+        showNotification(getTranslation(currentLanguage, 'copySuccess')); // Используем перевод для успешного копирования
     }, function() {
-        showNotification(getTranslation(currentLanguage, 'copyError'));
+        showNotification(getTranslation(currentLanguage, 'copyError')); // Используем перевод для ошибки копирования
     });
-
-    // Показываем уведомление о копировании на 5 секунд, а затем возвращаем базовое сообщение
-    setTimeout(function() {
-        showNotification(baseNotificationText);
-    }, 3000);
 }
-
 
 // Показ уведомлений
 function showNotification(message) {
     const notification = document.getElementById('notification');
-    notification.innerText = message;
+
+    // Скрываем предыдущее уведомление, если оно есть
+    if (notificationTimeout) {
+        clearTimeout(notificationTimeout);
+    }
+
+    notification.innerText = message; // Устанавливаем временное сообщение
     notification.style.visibility = 'visible';
 
-    setTimeout(function() {
-        notification.style.visibility = 'hidden';
+    // Запускаем таймер для скрытия временного уведомления через 3 секунды
+    notificationTimeout = setTimeout(function() {
+        notification.innerText = baseNotificationText; // Возвращаем базовое уведомление
     }, 3000);
 }
 
@@ -130,5 +133,4 @@ window.onclick = function(event) {
 };
 
 // Инициализация перевода при загрузке
-initializeTranslations();
-
+initializeTranslations(); // Вызов инициализации при загрузке страницы

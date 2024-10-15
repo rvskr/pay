@@ -19,7 +19,12 @@ const translations = {
         copyButton: "Копировать",
         themeToggleToDark: "Тёмная тема",
         themeToggleToLight: "Светлая тема",
-        bankIconsClickable: "Иконки банков кликабельные, хорошего вам настроения ^^"
+        bankIconsClickable: "Иконки банков кликабельные, хорошего вам настроения ^^",
+        contact: "Контакты",          // Добавлено
+        phoneLabel: "Мобильный:",      // Добавлено
+        telegramLabel: "Telegram:",     // Добавлено
+        phoneLink: "Позвонить",        // Добавлено
+        telegramLink: "Открыть"        // Добавлено
     },
     ua: {
         monobank: "Монобанк",
@@ -41,7 +46,12 @@ const translations = {
         copyButton: "Копіювати",
         themeToggleToDark: "Темна тема",
         themeToggleToLight: "Світла тема",
-        bankIconsClickable: "Іконки банків клікабельні, гарного вам настрою ^^"
+        bankIconsClickable: "Іконки банків клікабельні, гарного вам настрою ^^",
+        contact: "Контакти",          // Добавлено
+        phoneLabel: "Мобільний:",      // Добавлено
+        telegramLabel: "Telegram:",     // Добавлено
+        phoneLink: "Подзвонити",       // Добавлено
+        telegramLink: "Відкрити"       // Добавлено
     },
     en: {
         monobank: "Monobank",
@@ -61,6 +71,11 @@ const translations = {
         copyError: "Error copying!",
         languageSelected: "Selected language: ",
         copyButton: "Copy",
+        contact: "Contacts",          // Добавлено
+        phoneLabel: "Mobile:",        // Добавлено
+        telegramLabel: "Telegram:",    // Добавлено
+        phoneLink: "Call",            // Добавлено
+        telegramLink: "Open",         // Добавлено
         themeToggleToDark: "Dark theme",
         themeToggleToLight: "Light theme",
         bankIconsClickable: "Bank icons are clickable, have a great day ^^"
