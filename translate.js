@@ -20,11 +20,11 @@ const translations = {
         themeToggleToDark: "Тёмная тема",
         themeToggleToLight: "Светлая тема",
         bankIconsClickable: "Иконки банков кликабельные, хорошего вам настроения ^^",
-        contact: "Контакты",          // Добавлено
-        phoneLabel: "Мобильный:",      // Добавлено
-        telegramLabel: "Telegram:",     // Добавлено
-        phoneLink: "Позвонить",        // Добавлено
-        telegramLink: "Открыть"        // Добавлено
+        contact: "Контакты",          
+        phoneLabel: "Мобильный:",     
+        telegramLabel: "Telegram:",   
+        phoneLink: "Позвонить",       
+        telegramLink: "Открыть"       
     },
     ua: {
         monobank: "Монобанк",
@@ -47,11 +47,11 @@ const translations = {
         themeToggleToDark: "Темна тема",
         themeToggleToLight: "Світла тема",
         bankIconsClickable: "Іконки банків клікабельні, гарного вам настрою ^^",
-        contact: "Контакти",          // Добавлено
-        phoneLabel: "Мобільний:",      // Добавлено
-        telegramLabel: "Telegram:",     // Добавлено
-        phoneLink: "Подзвонити",       // Добавлено
-        telegramLink: "Відкрити"       // Добавлено
+        contact: "Контакти",          
+        phoneLabel: "Мобільний:",     
+        telegramLabel: "Telegram:",   
+        phoneLink: "Подзвонити",      
+        telegramLink: "Відкрити"      
     },
     en: {
         monobank: "Monobank",
@@ -71,11 +71,11 @@ const translations = {
         copyError: "Error copying!",
         languageSelected: "Selected language: ",
         copyButton: "Copy",
-        contact: "Contacts",          // Добавлено
-        phoneLabel: "Mobile:",        // Добавлено
-        telegramLabel: "Telegram:",    // Добавлено
-        phoneLink: "Call",            // Добавлено
-        telegramLink: "Open",         // Добавлено
+        contact: "Contacts",         
+        phoneLabel: "Mobile:",        
+        telegramLabel: "Telegram:",    
+        phoneLink: "Call",            
+        telegramLink: "Open",         
         themeToggleToDark: "Dark theme",
         themeToggleToLight: "Light theme",
         bankIconsClickable: "Bank icons are clickable, have a great day ^^"
