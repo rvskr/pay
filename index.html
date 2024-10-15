@@ -69,9 +69,7 @@
 
     <!-- Binance -->
     <div class="payment-method">
-
-            <img src="img/binance.png" alt="Binance">
-        </a>
+        <img src="img/binance.png" alt="Binance">
         <div class="payment-details">
             <p><strong id="binance-title">Binance TRC20 (USDT) </strong></p>
             <p><span id="binance-wallet-label">TRC20:</span> <span id="binance-wallet">TDuGEsovbirWiN2RgVnNWfUmc9doCTC18c</span></p>
@@ -79,41 +77,39 @@
         <button class="copy-button" onclick="copyText('binance-wallet')">Копировать</button>
     </div>
 
-        <!-- Binance Pay -->
-        <div class="payment-method">
-            <a href="https://app.binance.com/qr/dplk301e6768b4e44413a7c276b28c03920a" target="_blank">
-                <img src="img/binance.png" alt="Binance">
-            </a>
-            <div class="payment-details">
-                <p><strong id="binance-title">Binance Pay</strong></p>
-                <p><span id="binance-recipient-label">ID:</span> <span id="binance-recipient">97301846</span></p>
-            </div>
-            <button class="copy-button" onclick="copyText('binance-recipient')">Копировать</button>
+    <!-- Binance Pay -->
+    <div class="payment-method">
+        <a href="https://app.binance.com/qr/dplk301e6768b4e44413a7c276b28c03920a" target="_blank">
+            <img src="img/binance.png" alt="Binance">
+        </a>
+        <div class="payment-details">
+            <p><strong id="binance-title">Binance Pay</strong></p>
+            <p><span id="binance-recipient-label">ID:</span> <span id="binance-recipient">97301846</span></p>
         </div>
-
-<!-- Блок контактов -->
-<div class="contact-info">
-    <h2 id="contact-title">Контакты</h2>
-    <p>
-        <span id="phone-label">Мобильный:</span> 
-        <a href="tel:+380988609833" id="phone-number">Позвонить</a>
-    </p>
-    <p>
-        <span id="telegram-label">Telegram:</span> 
-        <a href="https://t.me/r_vskr" id="telegram-link">Открыть</a>
-    </p>
-</div>
-
-
-<!-- Модальное окно для QR-кодов -->
-<div id="qr-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-button" onclick="closeModal()">&times;</span>
-        <img id="qr-image" src="" alt="QR-код">
+        <button class="copy-button" onclick="copyText('binance-recipient')">Копировать</button>
     </div>
-</div>
 
-    
+    <!-- Блок контактов -->
+    <div class="contact-info">
+        <h2 id="contact-title">Контакты</h2>
+        <p>
+            <span id="phone-label">Мобильный:</span> 
+            <a href="tel:+380988609833" id="phone-number">Позвонить</a>
+        </p>
+        <p>
+            <span id="telegram-label">Telegram:</span> 
+            <a href="https://t.me/r_vskr" id="telegram-link">Открыть</a>
+        </p>
+    </div>
+
+    <!-- Модальное окно для QR-кодов -->
+    <div id="qr-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <img id="qr-image" src="" alt="QR-код">
+        </div>
+    </div>
+
 </div>
 
 <!-- Подключаем JavaScript -->
