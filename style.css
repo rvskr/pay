@@ -102,14 +102,13 @@ h2 {
     margin-bottom: 20px;
     padding: 10px;
     text-align: center;
-    background-color: #dff0d8;
-    border: 1px solid #3c763d;
-    color: #3c763d;
     border-radius: 5px;
-    height: 40px; /* Фиксированная высота для уведомлений */
-    line-height: 40px; /* Вертикальное центрирование текста */
-    visibility: visible; /* По умолчанию показываем базовое уведомление */
+    height: auto; /* Позволяем блоку иметь автоматическую высоту */
+    line-height: 1.5; /* Увеличиваем межстрочный интервал для лучшей читабельности */
+    white-space: normal; /* Разрешаем перенос текста на новые строки */
+    word-wrap: break-word; /* Разрешаем перенос длинных слов */
 }
+
 
 .dark-theme .notification {
     background-color: #4b4b4b;

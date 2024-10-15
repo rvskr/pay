@@ -1,5 +1,6 @@
 // Переменная для текущего языка
 let currentLanguage = 'ru'; // Установите язык по умолчанию
+let baseNotificationText = ''; // Базовое уведомление будет инициализироваться позже
 
 // Функция получения перевода
 function getTranslation(lang, key) {
@@ -40,6 +41,10 @@ function initializeTranslations() {
     themeToggle.innerText = body.classList.contains('dark-theme')
         ? getTranslation(currentLanguage, 'themeToggleToLight')
         : getTranslation(currentLanguage, 'themeToggleToDark');
+
+    // Обновляем базовое уведомление
+    baseNotificationText = getTranslation(currentLanguage, 'bankIconsClickable');
+    document.getElementById('notification').innerText = baseNotificationText;
 }
 
 // Переключение темы
@@ -50,11 +55,11 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');
         body.classList.add('light-theme');
-        themeToggle.innerText = getTranslation(currentLanguage, 'themeToggleToLight'); // Исправлено
+        themeToggle.innerText = getTranslation(currentLanguage, 'themeToggleToLight');
     } else {
         body.classList.remove('light-theme');
         body.classList.add('dark-theme');
-        themeToggle.innerText = getTranslation(currentLanguage, 'themeToggleToDark'); // Исправлено
+        themeToggle.innerText = getTranslation(currentLanguage, 'themeToggleToDark');
     }
 });
 
@@ -64,18 +69,31 @@ function switchLanguage(lang) {
     initializeTranslations(); // Обновляем тексты на странице
 
     // Уведомление о смене языка
-    showNotification(getTranslation(lang, 'languageSelected') + lang);
-}
+    showNotification(getTranslation(lang, 'languageSelected') + ' ' + lang);
 
+    // Через 5 секунд возвращаем базовое уведомление
+    setTimeout(function() {
+        document.getElementById('notification').innerText = baseNotificationText;
+        document.getElementById('notification').style.visibility = 'visible';
+    }, 3000);
+}
 // Копирование текста в буфер обмена
 function copyText(elementId) {
     const text = document.getElementById(elementId).innerText;
+    
     navigator.clipboard.writeText(text).then(function() {
+        baseNotificationText = getTranslation(currentLanguage, 'bankIconsClickable');
         showNotification(getTranslation(currentLanguage, 'copySuccess'));
     }, function() {
         showNotification(getTranslation(currentLanguage, 'copyError'));
     });
+
+    // Показываем уведомление о копировании на 5 секунд, а затем возвращаем базовое сообщение
+    setTimeout(function() {
+        showNotification(baseNotificationText);
+    }, 3000);
 }
+
 
 // Показ уведомлений
 function showNotification(message) {
@@ -85,7 +103,7 @@ function showNotification(message) {
 
     setTimeout(function() {
         notification.style.visibility = 'hidden';
-    }, 5000);
+    }, 3000);
 }
 
 // Функция для показа модального окна с QR-кодом
@@ -110,7 +128,6 @@ window.onclick = function(event) {
         modal.style.display = 'none';
     }
 };
-
 
 // Инициализация перевода при загрузке
 initializeTranslations();

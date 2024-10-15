@@ -18,7 +18,8 @@ const translations = {
         languageSelected: "Выбран язык: ",
         copyButton: "Копировать",
         themeToggleToDark: "Тёмная тема",
-        themeToggleToLight: "Светлая тема"
+        themeToggleToLight: "Светлая тема",
+        bankIconsClickable: "Иконки банков кликабельные, хорошего вам настроения ^^"
     },
     ua: {
         monobank: "Монобанк",
@@ -39,7 +40,8 @@ const translations = {
         languageSelected: "Обрано мову: ",
         copyButton: "Копіювати",
         themeToggleToDark: "Темна тема",
-        themeToggleToLight: "Світла тема"
+        themeToggleToLight: "Світла тема",
+        bankIconsClickable: "Іконки банків клікабельні, гарного вам настрою ^^"
     },
     en: {
         monobank: "Monobank",
@@ -60,6 +62,7 @@ const translations = {
         languageSelected: "Selected language: ",
         copyButton: "Copy",
         themeToggleToDark: "Dark theme",
-        themeToggleToLight: "Light theme"
+        themeToggleToLight: "Light theme",
+        bankIconsClickable: "Bank icons are clickable, have a great day ^^"
     }
 };
