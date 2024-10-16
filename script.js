@@ -141,5 +141,31 @@ window.onclick = function(event) {
     }
 };
 
+
+// Получаем все изображения
+const images = document.querySelectorAll('.payment-image img');
+
+// Флаг для остановки анимации
+let animationRunning = true;
+
+// Функция для добавления волнообразной анимации по порядку
+function addWaveAnimation() {
+    images.forEach((img, index) => {
+        // Устанавливаем задержку для каждого изображения (в миллисекундах)
+        const delay = index * 300; // 300мс между изображениями
+
+        // Если индекс четный, добавляем класс для подъема
+        if (index % 2 === 0) {
+            img.classList.add('wave-up');
+            img.style.animationDelay = `${delay}ms`;
+        } else {
+            // Если индекс нечетный, добавляем класс для опускания
+            img.classList.add('wave-down');
+            img.style.animationDelay = `${delay}ms`;
+        }
+    });
+}
+
+
 // Инициализация перевода при загрузке
 initializeTranslations(); // Вызов инициализации при загрузке страницы
