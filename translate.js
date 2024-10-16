@@ -1,5 +1,6 @@
 const translations = {
     ru: {
+        showQRCodeButton: "Показать QR-код",
         monobank: "Монобанк",
         privatbank: "Приватбанк",
         abank: "А-Банк",
@@ -12,11 +13,12 @@ const translations = {
         abankAccountNumber: "Номер карты:",
         abankRecipient: "Имя получателя:",
         binanceWallet: "Кошелек:",
-        binanceRecipient: "Имя получателя:",
+        binanceRecipient: "ID:",
         copySuccess: "Скопировано в буфер обмена!",
         copyError: "Ошибка при копировании!",
         languageSelected: "Выбран язык: ",
         copyButton: "Копировать",
+        openButton: "Открыть",
         themeToggleToDark: "Тёмная тема",
         themeToggleToLight: "Светлая тема",
         bankIconsClickable: "Иконки банков кликабельные, хорошего вам настроения ^^",
@@ -24,9 +26,11 @@ const translations = {
         phoneLabel: "Мобильный:",     
         telegramLabel: "Telegram:",   
         phoneLink: "Позвонить",       
-        telegramLink: "Открыть"       
+        telegramLink: "Открыть",
+        recipientName: "Роман Р." // Добавлено имя
     },
     ua: {
+        showQRCodeButton: "Показати QR-код",
         monobank: "Монобанк",
         privatbank: "Приватбанк",
         abank: "А-Банк",
@@ -39,11 +43,12 @@ const translations = {
         abankAccountNumber: "Номер карти:",
         abankRecipient: "Ім'я отримувача:",
         binanceWallet: "Гаманець:",
-        binanceRecipient: "Ім'я отримувача:",
+        binanceRecipient: "ID:",
         copySuccess: "Скопійовано в буфер обміну!",
         copyError: "Помилка при копіюванні!",
         languageSelected: "Обрано мову: ",
         copyButton: "Копіювати",
+        openButton: "Відкрити",
         themeToggleToDark: "Темна тема",
         themeToggleToLight: "Світла тема",
         bankIconsClickable: "Іконки банків клікабельні, гарного вам настрою ^^",
@@ -51,9 +56,11 @@ const translations = {
         phoneLabel: "Мобільний:",     
         telegramLabel: "Telegram:",   
         phoneLink: "Подзвонити",      
-        telegramLink: "Відкрити"      
+        telegramLink: "Відкрити",
+        recipientName: "Роман Р." // Добавлено имя
     },
     en: {
+        showQRCodeButton: "Show QR Code",
         monobank: "Monobank",
         privatbank: "PrivatBank",
         abank: "A-Bank",
@@ -66,11 +73,12 @@ const translations = {
         abankAccountNumber: "Card number:",
         abankRecipient: "Recipient name:",
         binanceWallet: "Wallet:",
-        binanceRecipient: "Recipient name:",
+        binanceRecipient: "ID:",
         copySuccess: "Copied to clipboard!",
         copyError: "Error copying!",
         languageSelected: "Selected language: ",
         copyButton: "Copy",
+        openButton: "Open",
         contact: "Contacts",         
         phoneLabel: "Mobile:",        
         telegramLabel: "Telegram:",    
@@ -78,6 +86,7 @@ const translations = {
         telegramLink: "Open",         
         themeToggleToDark: "Dark theme",
         themeToggleToLight: "Light theme",
-        bankIconsClickable: "Bank icons are clickable, have a great day ^^"
+        bankIconsClickable: "Bank icons are clickable, have a great day ^^",
+        recipientName: "Roman R." // Добавлено имя
     }
 };

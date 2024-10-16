@@ -1,132 +1,43 @@
-/* Основные стили для body */
+/* Основные стили для ПК */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #000000;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Тёмная тема */
-.dark-theme {
-    background-color: #2c2c2c;
-    color: #ffffff;
-}
-
-.dark-theme .container {
-    background-color: #3b3b3b; /* Изменен цвет для тёмной темы */
-    color: #ffffff;
-    border-color: #4a4a4a;
-}
-
-/* Светлая тема */
-.light-theme {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-.light-theme .container {
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #ddd;
-}
-
-/* Стили для контейнера */
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
-    background-color: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #ddd;
     padding: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Стили заголовка */
-h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.5em;
-}
-
-/* Стили для каждого метода оплаты */
-.payment-method {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
 }
 
-.payment-method:hover {
-    background-color: #767b75;
-}
-
-.payment-method img {
-    width: 60px;
-    height: 60px;
-    margin-right: 20px;
-}
-
-.payment-details {
-    flex: 1;
-}
-
-.payment-details p {
-    margin: 5px 0;
-    word-break: break-all;
-}
-
-/* Стили для кнопок копирования */
-.copy-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 8px 12px;
-    text-align: center;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.copy-button:hover {
-    background-color: #45a049;
-}
-
-/* Уведомление */
-.notification {
-    margin-bottom: 20px;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    line-height: 1.5; /* Увеличиваем межстрочный интервал для лучшей читабельности */
-    white-space: normal; /* Разрешаем перенос текста на новые строки */
-    word-wrap: break-word; /* Разрешаем перенос длинных слов */
-}
-
-.dark-theme .notification {
-    background-color: #4b4b4b;
-    border-color: #666;
-    color: #cccccc;
-}
-
-.light-theme .notification {
-    background-color: #dff0d8;
-    border-color: #3c763d;
-    color: #3c763d;
-}
-
-/* Стили для переключателей темы и языка */
+/* Стили для переключателя темы */
 .settings {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     margin-bottom: 20px;
-    flex-wrap: wrap; /* Добавлено для возможности переноса элементов */
-    gap: 10px; /* Добавлено для промежутка между кнопками */
+}
+
+.theme-toggle {
+    background-color: #3b3b3b;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: #3700b3;
 }
 
 .language-switcher {
@@ -140,19 +51,201 @@ h2 {
     cursor: pointer;
 }
 
-.theme-toggle {
-    background-color: #2a282867;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Заголовки */
+h2 {
+    margin: 20px 0;
+    font-size: 24px;
+    text-align: center;
+    color: #333;
 }
 
-.theme-toggle:hover {
-    background-color: #4b4e4b;
+/* Уведомление */
+.notification {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Стили для платежных методов */
+.payment-method {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.payment-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.payment-image {
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.payment-image img {
+    max-width: 120px;
+}
+
+.payment-details {
+    flex-grow: 1;
+}
+
+/* Кнопки */
+.payment-buttons {
+    display: flex;
+    min-width: 200px;
+    flex-direction:column; /* Горизонтальное расположение по умолчанию */
+    gap: 10px;
+    justify-content: flex-end; /* Выравнивание кнопок справа */
+}
+
+button {
+    background-color: #3b3b3b;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #3700b3;
+    transform: translateY(-2px);
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.modal-content {
+    background-color: transparent;
+    margin: auto;
+    padding: 20px;
+    border: none;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow: hidden;
+    padding-right: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 0;
+}
+
+.modal-content {
+    scrollbar-width: none;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative; /* Устанавливаем относительное позиционирование */
+    top: -20px; /* Поднимаем кнопку на 10 пикселей выше */
+    margin-top: -10px; /* Отрицательный отступ для дополнительного подъема */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Темная тема */
+body.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-theme .payment-method {
+    background-color: #1e1e1e;
+}
+
+body.dark-theme .notification {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-theme h2 {
+    color: #fff;
+}
+
+body.dark-theme .modal-content {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+/* Светлая тема */
+body.light-theme {
+    background-color: #f0f0f0;
+    color: #000000;
+}
+
+body.light-theme .payment-method {
+    background-color: #ffffff;
+}
+
+body.light-theme .notification {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+body.light-theme h2 {
+    color: #333;
+}
+
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-width: 90vw;
+        max-height: 85vh;
+    }
+
+    .payment-method {
+        flex-direction: column; /* Вертикальное расположение блоков */
+        align-items: center;
+    }
+
+    .payment-buttons {
+        flex-direction: column; /* Вертикальное расположение кнопок на мобильных */
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
 }
 
 /* Стили для блока контактов */
@@ -161,8 +254,9 @@ h2 {
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #f9f9f9; /* Цвет фона блока с контактами */
-    transition: background-color 0.3s ease;
+    width: 100%;
+
+
 }
 
 .contact-info h2 {
@@ -179,7 +273,7 @@ h2 {
 
 /* Стили для ссылок в контактной информации */
 .contact-info a {
-    color: #4CAF50; /* Цвет для ссылок */
+    color: #3c3ca1;
     text-decoration: none; /* Убираем подчеркивание */
 }
 
@@ -189,7 +283,7 @@ h2 {
 
 /* Стили для блока контактов в тёмной теме */
 .dark-theme .contact-info {
-    background-color: #3b3b3b; /* Цвет фона для тёмной темы */
+    background-color: #1e1e1e; /* Цвет фона для тёмной темы */
     border-color: #4a4a4a; /* Цвет границы для тёмной темы */
 }
 
@@ -198,134 +292,4 @@ h2 {
     color: #ffffff; /* Цвет текста для заголовка и параграфов в тёмной теме */
 }
 
-/* Мобильная оптимизация */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-        text-align: center; /* Центрирование текста в body */
-    }
 
-    .container {
-        padding: 15px;
-    }
-
-    h2 {
-        font-size: 1.2em;
-        margin-bottom: 20px;
-    }
-
-    .payment-method {
-        flex-direction: column;
-        align-items: center; /* Центрирование элементов внутри метода оплаты */
-        padding: 10px;
-    }
-
-    .payment-method img {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 10px;
-    }
-
-    .payment-details p {
-        font-size: 18px;
-        text-align: center; /* Центрирование текста в деталях оплаты */
-    }
-
-    .copy-button {
-        margin-top: 10px;
-        font-size: 20px;
-        padding: 6px 10px;
-    }
-
-    .settings {
-        justify-content: center; /* Центрирование кнопок в мобильной версии */
-        gap: 10px; /* Промежуток между кнопками */
-    }
-
-    .theme-toggle, .qr-button {
-        flex: 0 1 auto; /* Устанавливаем авто-ширину для кнопок */
-        margin: 5px; /* Добавляем немного отступа для кнопок */
-    }
-
-    .flag {
-        width: 80px;
-        height: 40px;
-        margin-top: 10px;
-    }
-
-    .theme-toggle {
-        font-size: 13px;
-        padding: 6px 10px;
-    }
-
-    .notification {
-        font-size: 14px;
-    }
-
-    .contact-info {
-        text-align: center; /* Центрирование текста в блоке контактов */
-    }
-}
-
-/* Стили для модального окна */
-.modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный цвет для затемнения фона */
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(10px); /* Размытие фона */
-}
-
-.modal-content {
-    background-color: rgba(0, 0, 0, 0);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-    max-width: 40%; /* Для ПК - 50% ширины экрана */
-    max-height: 80%; /* Максимальная высота окна */
-}
-
-.close-button {
-    position: absolute;
-    top: -30px;
-    right: 1px;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-#qr-image {
-    max-width: 80%; /* QR-код занимает всю ширину модального окна */
-    max-height: 40%; /* Максимальная высота изображения */
-    border-radius: 10px;
-    width: auto;
-    height: auto;
-}
-
-.qr-button {
-    background-color: #2a282867;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.qr-button:hover {
-    background-color: #4b4e4b;
-}
-
-/* Медиа-запрос для мобильных устройств (ширина экрана до 768px) */
-@media (max-width: 768px) {
-    .modal-content {
-        max-width: 80%; /* На мобильных устройствах - 100% ширины экрана */
-    }
-}

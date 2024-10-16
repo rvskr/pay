@@ -1,6 +1,6 @@
 // Переменная для текущего языка
 let currentLanguage = 'ru'; // Установите язык по умолчанию
-let baseNotificationText = 'Иконки банков кликабельные, хорошего вам настроения ^^'; // Базовое уведомление
+let baseNotificationText; // Будем обновлять его в зависимости от языка
 let notificationTimeout; // Таймер для временного уведомления
 
 // Функция получения перевода
@@ -9,50 +9,59 @@ function getTranslation(lang, key) {
 }
 
 function initializeTranslations() {
-    const body = document.body;
+    baseNotificationText = translations[currentLanguage].bankIconsClickable; // Обновляем базовое уведомление
+    document.getElementById('page-title').innerText = translations[currentLanguage].paymentMethods; // Заголовок страницы
+    document.getElementById('payment-methods-title').innerText = translations[currentLanguage].paymentMethods; // Заголовок выбора способа оплаты
+    document.getElementById('notification').innerText = translations[currentLanguage].bankIconsClickable; 
+    
+ // Монобанк
+ document.getElementById('monobank-title').innerText = translations[currentLanguage].monobank;
+ document.getElementById('monobank-recipient-label').innerText = translations[currentLanguage].monobankRecipient;
+ document.getElementById('monobank-recipient').innerText = translations[currentLanguage].recipientName; // Имя получателя
+ document.getElementById('monobank-card-label').innerText = translations[currentLanguage].monobankCardNumber;
 
-    // Обновляем тексты на странице
-    document.getElementById('monobank-title').innerText = getTranslation(currentLanguage, 'monobank');
-    document.getElementById('monobank-card-label').innerText = getTranslation(currentLanguage, 'monobankCardNumber');
-    document.getElementById('monobank-recipient-label').innerText = getTranslation(currentLanguage, 'monobankRecipient');
+ // Приватбанк
+ document.getElementById('privatbank-title').innerText = translations[currentLanguage].privatbank;
+ document.getElementById('privatbank-recipient-label').innerText = translations[currentLanguage].privatbankRecipient;
+ document.getElementById('privatbank-recipient').innerText = translations[currentLanguage].recipientName; // Имя получателя
+ document.getElementById('privatbank-card-label').innerText = translations[currentLanguage].privatbankCardNumber;
 
-    document.getElementById('privatbank-title').innerText = getTranslation(currentLanguage, 'privatbank');
-    document.getElementById('privatbank-card-label').innerText = getTranslation(currentLanguage, 'privatbankCardNumber');
-    document.getElementById('privatbank-recipient-label').innerText = getTranslation(currentLanguage, 'privatbankRecipient');
+ // А-Банк
+ document.getElementById('abank-title').innerText = translations[currentLanguage].abank;
+ document.getElementById('abank-recipient-label').innerText = translations[currentLanguage].abankRecipient;
+ document.getElementById('abank-recipient').innerText = translations[currentLanguage].recipientName; // Имя получателя
+ document.getElementById('abank-card-label').innerText = translations[currentLanguage].abankAccountNumber;
 
-    document.getElementById('abank-title').innerText = getTranslation(currentLanguage, 'abank');
-    document.getElementById('abank-account-label').innerText = getTranslation(currentLanguage, 'abankAccountNumber');
-    document.getElementById('abank-recipient-label').innerText = getTranslation(currentLanguage, 'abankRecipient');
 
-    document.getElementById('binance-title').innerText = getTranslation(currentLanguage, 'binance');
-    document.getElementById('binance-wallet-label').innerText = getTranslation(currentLanguage, 'binanceWallet');
-    document.getElementById('binance-recipient-label').innerText = getTranslation(currentLanguage, 'binanceRecipient');
+    // Binance Pay
+    document.getElementById('binance-pay-title').innerText = translations[currentLanguage].binance;
+    document.getElementById('binance-recipient-label').innerText = translations[currentLanguage].binanceRecipient;
 
-    document.getElementById('payment-methods-title').innerText = getTranslation(currentLanguage, 'paymentMethods');
+    // Binance TRC20
+    document.getElementById('binance-title').innerText = translations[currentLanguage].binance;
+    document.getElementById('binance-wallet-label').innerText = translations[currentLanguage].binanceWallet;
 
-    // Обновляем текст в блоке контактов
-    document.getElementById('contact-title').innerText = getTranslation(currentLanguage, 'contact');
-    document.getElementById('phone-label').innerText = getTranslation(currentLanguage, 'phoneLabel');
-    document.getElementById('phone-number').innerText = getTranslation(currentLanguage, 'phoneLink');
-    document.getElementById('telegram-label').innerText = getTranslation(currentLanguage, 'telegramLabel');
-    document.getElementById('telegram-link').innerText = getTranslation(currentLanguage, 'telegramLink');
+    // Блок контактов
+    document.getElementById('contact-title').innerText = translations[currentLanguage].contact;
+    document.getElementById('phone-label').innerText = translations[currentLanguage].phoneLabel;
+    document.getElementById('telegram-label').innerText = translations[currentLanguage].telegramLabel;
+    document.getElementById('phone-number').innerText = translations[currentLanguage].phoneLink;
+    document.getElementById('telegram-link').innerText = translations[currentLanguage].telegramLink;
 
-    // Обновляем текст кнопок копирования
-    const copyButtons = document.querySelectorAll('.copy-button');
-    copyButtons.forEach(button => {
-        button.innerText = getTranslation(currentLanguage, 'copyButton');
+    // Кнопка переключения темы
+    document.getElementById('theme-toggle').innerText = translations[currentLanguage].themeToggleToLight; // Можно обновить в зависимости от темы
+
+    // Кнопки копирования, открытия и QR-кода
+    document.querySelectorAll('.copy-button').forEach(button => {
+        button.innerText = translations[currentLanguage].copyButton;
     });
 
-    // Обновляем текст кнопки смены темы
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.innerText = body.classList.contains('dark-theme')
-        ? getTranslation(currentLanguage, 'themeToggleToLight')
-        : getTranslation(currentLanguage, 'themeToggleToDark');
+    document.querySelectorAll('.open-button').forEach(button => {
+        button.innerText = translations[currentLanguage].openButton; // Перевод для кнопки "Открыть"
+    });
 
-    // Обновляем базовое уведомление
-    baseNotificationText = getTranslation(currentLanguage, 'bankIconsClickable');
-    document.getElementById('notification').innerText = baseNotificationText; // Устанавливаем базовое уведомление
-    document.getElementById('notification').style.visibility = 'visible'; // Показываем базовое уведомление
+    // Кнопка "Показать QR-код"
+    document.getElementById('qr-button').innerText = translations[currentLanguage].showQRCodeButton; // Добавляем перевод для кнопки QR-кода
 }
 
 // Переключение темы
