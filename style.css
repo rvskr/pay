@@ -10,6 +10,7 @@ body {
 
 .container {
     max-width: 800px;
+    min-width: 200px;
     margin: 0 auto;
     padding: 20px;
     display: flex;
@@ -96,9 +97,7 @@ h2 {
 
 .payment-image img {
     max-width: 120px;
-
 }
-
 
 .payment-details {
     flex-grow: 1;
@@ -267,3 +266,51 @@ body.light-theme h2 {
 .dark-theme .contact-info p {
     color: #ffffff; /* Цвет текста для заголовка и параграфов в тёмной теме */
 }
+
+/* Для блоков с длинным текстом */
+.payment-details span {
+    display: inline-block;
+    max-width: 100%;  /* Ограничиваем ширину блока */
+    overflow: hidden; /* Скрываем содержимое, выходящее за пределы блока */
+    text-overflow: ellipsis; /* Добавляем многоточие при переполнении */
+    white-space: nowrap; /* Отключаем перенос строки */
+}
+
+/* Альтернативный вариант для переноса текста */
+.payment-details span {
+    word-wrap: break-word; /* Позволяет тексту переноситься на новую строку */
+}
+
+/* Специально для номера кошелька TRC20 */
+.payment-details #binance-wallet {
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .payment-details span {
+        white-space: normal; 
+        word-break: break-word; 
+    }
+}
+
+/* Новая секция для экранов меньше 310px */
+@media (max-width: 310px) {
+    .settings {
+        flex-direction: column; /* Изменение направления флекса на вертикальное */
+        align-items: center; /* Центрирование элементов по оси Y */
+    }
+
+    .language-switcher, 
+    .theme-toggle,
+    .qr-button {
+        width: 100%; /* Установка ширины на 100% */
+        padding-top: 20px; /* Отступ сверху */
+        margin-bottom: 10px; /* Отступ снизу */
+        display: flex; /* Включение флекс-бокса */
+        justify-content: space-between; /* Разделение элементов с пространством между ними */
+        align-items: center; /* Центрирование элементов по оси Y */
+    }
+}
+
