@@ -34,11 +34,11 @@ function initializeTranslations() {
 
 
     // Binance Pay
-    document.getElementById('binance-pay-title').innerText = translations[currentLanguage].binance;
+    document.getElementById('binance-pay-title').innerText = translations[currentLanguage].binancePay;
     document.getElementById('binance-recipient-label').innerText = translations[currentLanguage].binanceRecipient;
 
     // Binance TRC20
-    document.getElementById('binance-title').innerText = translations[currentLanguage].binance;
+    document.getElementById('binance-title').innerText = translations[currentLanguage].binanceTRC;
     document.getElementById('binance-wallet-label').innerText = translations[currentLanguage].binanceWallet;
 
     // Блок контактов
