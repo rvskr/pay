@@ -184,12 +184,12 @@ button:hover {
 
 /* Темная тема */
 body.dark-theme {
-    background-color: #121212;
+    background-color:   #121212ce;
     color: #ffffff;
 }
 
 body.dark-theme .payment-method {
-    background-color: #1e1e1e;
+    background-color: #1e1e1e74;
 }
 
 body.dark-theme .notification {
@@ -283,7 +283,7 @@ body.light-theme h2 {
 
 /* Стили для блока контактов в тёмной теме */
 .dark-theme .contact-info {
-    background-color: #1e1e1e; /* Цвет фона для тёмной темы */
+    background-color: #1e1e1e8b; /* Цвет фона для тёмной темы */
     border-color: #4a4a4a; /* Цвет границы для тёмной темы */
 }
 
