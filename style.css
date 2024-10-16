@@ -312,5 +312,9 @@ body.light-theme h2 {
         justify-content: space-between; /* Разделение элементов с пространством между ними */
         align-items: center; /* Центрирование элементов по оси Y */
     }
+    .flag {
+        width: 80px;
+        height: 40px;
+      }
 }
 
