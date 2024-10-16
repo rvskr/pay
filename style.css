@@ -296,7 +296,7 @@ body.light-theme h2 {
 }
 
 /* Новая секция для экранов меньше 310px */
-@media (max-width: 310px) {
+@media (max-width: 440px) {
     .settings {
         flex-direction: column; /* Изменение направления флекса на вертикальное */
         align-items: center; /* Центрирование элементов по оси Y */
