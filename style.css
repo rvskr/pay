@@ -41,10 +41,6 @@ body {
     background-color: #3700b3;
 }
 
-.theme-toggle:active {
-    pointer-events: none;
-}
-
 .language-switcher {
     display: flex;
     gap: 10px;
@@ -130,9 +126,6 @@ button {
 button:hover {
     background-color: #3700b3;
     transform: translateY(-2px);
-}
-button:active {
-    pointer-events: none;
 }
 
 /* Модальное окно */
@@ -261,9 +254,6 @@ body.light-theme h2 {
 
 .contact-info a:hover {
     text-decoration: underline; /* Подчеркивание при наведении */
-}
-.contact-info a:active {
-    pointer-events: none; /* Подчеркивание при наведении */
 }
 
 /* Стили для блока контактов в тёмной теме */
