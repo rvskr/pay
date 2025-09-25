@@ -11,12 +11,42 @@
 
 <div class="container">
     <div class="settings">
-        <button id="theme-toggle" class="theme-toggle">Светлая тема</button>
-        <button id="qr-button" class="qr-button" onclick="showQRCode('img/qr-code.png')">Показать QR-код</button>
+        <button id="theme-toggle" class="theme-toggle icon-button" title="Переключить тему">
+            <svg class="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="sun-icon" d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z" stroke="currentColor" stroke-width="2"/>
+                <path class="sun-icon" d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                <path class="moon-icon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" fill="currentColor" style="display: none;"/>
+            </svg>
+        </button>
+        
+        <button id="qr-button" class="qr-button icon-button" onclick="showQRCode('img/qr-code.png')" title="Показать QR-код">
+            <svg class="qr-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                <rect x="13" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                <rect x="3" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                <rect x="5" y="5" width="4" height="4" fill="currentColor"/>
+                <rect x="15" y="5" width="4" height="4" fill="currentColor"/>
+                <rect x="5" y="15" width="4" height="4" fill="currentColor"/>
+                <rect x="13" y="13" width="2" height="2" fill="currentColor"/>
+                <rect x="17" y="13" width="2" height="2" fill="currentColor"/>
+                <rect x="19" y="15" width="2" height="2" fill="currentColor"/>
+                <rect x="15" y="17" width="2" height="2" fill="currentColor"/>
+                <rect x="13" y="19" width="2" height="2" fill="currentColor"/>
+                <rect x="17" y="19" width="2" height="2" fill="currentColor"/>
+                <rect x="19" y="17" width="2" height="2" fill="currentColor"/>
+            </svg>
+        </button>
+        
         <div class="language-switcher">
-            <img src="img/ru.svg" alt="Русский" class="flag" onclick="switchLanguage('ru')">
-            <img src="img/ua.svg" alt="Українська" class="flag" onclick="switchLanguage('ua')">
-            <img src="img/usa.svg" alt="English" class="flag" onclick="switchLanguage('en')">
+            <button class="language-btn icon-button" onclick="switchLanguage('ru')" title="Русский">
+                <img src="img/ru.png" alt="Русский" class="flag">
+            </button>
+            <button class="language-btn icon-button" onclick="switchLanguage('ua')" title="Українська">
+                <img src="img/ua.svg" alt="Українська" class="flag">
+            </button>
+            <button class="language-btn icon-button" onclick="switchLanguage('en')" title="English">
+                <img src="img/usa.svg" alt="English" class="flag">
+            </button>
         </div>
     </div>
 
@@ -24,100 +54,7 @@
     
     <div id="notification" class="notification">Иконки банков кликабельные, хорошего вам настроения ^^ </div>
     
-    <!-- Монобанк -->
-    <div class="payment-method">
-        <div class="payment-info">
-            <div class="payment-image">
-                <a href="https://send.monobank.ua/AaWsPtYJK3" target="_blank">
-                    <img src="img/mono.png" alt="Монобанк">
-                </a>
-            </div>
-            <div class="payment-details">
-                <p><strong id="monobank-title">Монобанк</strong></p>
-                <p><span id="monobank-recipient-label">Имя получателя:</span> <span id="monobank-recipient">Роман Р.</span></p>
-                <p><span id="monobank-card-label">Номер карты:</span> <span id="monobank-number">4441 1110 6846 4548</span></p>
-            </div>
-        </div>
-        <div class="payment-buttons">
-            <button class="copy-button" onclick="copyText('monobank-number')">Копировать</button>
-            <button class="open-button" onclick="window.open('https://send.monobank.ua/AaWsPtYJK3', '_blank')">Открыть</button>
-        </div>
-    </div>
-
-    <!-- Приватбанк -->
-    <div class="payment-method">
-        <div class="payment-info">
-            <div class="payment-image">
-                <a href="https://www.privat24.ua/send/dp8a1" target="_blank">
-                    <img src="img/privat24.png" alt="Приватбанк">
-                </a>
-            </div>
-            <div class="payment-details">
-                <p><strong id="privatbank-title">Приватбанк</strong></p>
-                <p><span id="privatbank-recipient-label">Имя получателя:</span> <span id="privatbank-recipient">Роман Р.</span></p>
-                <p><span id="privatbank-card-label">Номер карты:</span> <span id="privatbank-number">4149 4390 2762 3200</span></p>
-            </div>
-        </div>
-        <div class="payment-buttons">
-            <button class="copy-button" onclick="copyText('privatbank-number')">Копировать</button>
-            <button class="open-button" onclick="window.open('https://www.privat24.ua/send/dp8a1', '_blank')">Открыть</button>
-        </div>
-    </div>
-
-    <!-- А-Банк -->
-    <div class="payment-method">
-        <div class="payment-info">
-            <div class="payment-image">
-                <a href="https://pay.a-bank.com.ua/card/35xfUu4sUzXgJxA6" target="_blank">
-                    <img src="img/abank.webp" alt="А-Банк">
-                </a>
-            </div>
-            <div class="payment-details">
-                <p><strong id="abank-title">А-Банк</strong></p>
-                <p><span id="abank-recipient-label">Имя получателя:</span> <span id="abank-recipient">Роман Р.</span></p>
-                <p><span id="abank-card-label">Номер карты:</span> <span id="abank-number">4323 3473 7699 5392</span></p>
-            </div>
-        </div>
-        <div class="payment-buttons">
-            <button class="copy-button" onclick="copyText('abank-number')">Копировать</button>
-            <button class="open-button" onclick="window.open('https://pay.a-bank.com.ua/card/35xfUu4sUzXgJxA6', '_blank')">Открыть</button>
-        </div>
-    </div>
-
-    <!-- Binance Pay -->
-    <div class="payment-method">
-        <div class="payment-info">
-            <div class="payment-image">
-                <a href="https://app.binance.com/qr/dplk301e6768b4e44413a7c276b28c03920a" target="_blank">
-                    <img src="img/binance.png" alt="Binance">
-                </a>
-            </div>
-            <div class="payment-details">
-                <p><strong id="binance-pay-title">Binance Pay</strong></p>
-                <p><span id="binance-recipient-label">ID:</span> <span id="binance-recipient">97301846</span></p>
-            </div>
-        </div>
-        <div class="payment-buttons">
-            <button class="copy-button" onclick="copyText('binance-recipient')">Копировать</button>
-            <button class="open-button" onclick="window.open('https://app.binance.com/qr/dplk301e6768b4e44413a7c276b28c03920a', '_blank')">Открыть</button>
-        </div>
-    </div>
-
-    <!-- Binance TRC20 -->
-    <div class="payment-method">
-        <div class="payment-info">
-            <div class="payment-image">
-                <img src="img/binance.png" alt="Binance">
-            </div>
-            <div class="payment-details">
-                <p><strong id="binance-title">Binance TRC20 (USDT)</strong></p>
-                <p><span id="binance-wallet-label">TRC20:</span> <span id="binance-wallet">TDuGEsovbirWiN2RgVnNWfUmc9doCTC18c</span></p>
-            </div>
-        </div>
-        <div class="payment-buttons">
-            <button class="copy-button" onclick="copyText('binance-wallet')">Копировать</button>
-        </div>
-    </div>
+    <div id="payment-methods"></div>
 
     <!-- Блок контактов -->
     <div class="contact-info">
@@ -141,8 +78,9 @@
 
 </div>
 
-<script src="script.js"></script>
+<script src="data.js"></script>
 <script src="translate.js"></script>
+<script src="script.js"></script>
 </body>
 </html> 
 

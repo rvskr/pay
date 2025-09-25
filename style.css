@@ -1,321 +1,464 @@
-/* Основные стили для ПК */
+/* Base and Theme Variables */
+:root {
+  --bg: #1a1a1a; /* was #141414 */
+  --bg-elev: #222222; /* was #1b1b1b */
+  --card: #262626; /* was #1e1e1e */
+  --text: #e6e6e6;
+  --text-muted: #b3b3b3;
+  --border: #2a2a2a;
+  --accent: #4da3ffbe;
+  --accent-contrast: #0b0f14;
+  --success: #4caf50;
+  --warning: #ffb74d;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+}
+
+.light-theme {
+  --bg: #f5f7fb;
+  --bg-elev: #ffffff;
+  --card: #ffffff;
+  --text: #1b1f24;
+  --text-muted: #5a6b7b;
+  --border: #e6eaf0;
+  --accent: #2a7be4;
+  --accent-contrast: #ffffff;
+  --shadow: 0 6px 24px rgba(13, 23, 37, 0.08);
+}
+
+/* Reset and Typography */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-    color: #000000;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Inter, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3, h4, h5 { margin: 0 0 var(--space-4); line-height: 1.25; }
+
+/* Layout */
 .container {
-    max-width: 800px;
-    min-width: 200px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-5);
 }
 
-/* Стили для переключателя темы */
 .settings {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.theme-toggle {
-    background-color: #3b3b3b;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    color: #ffffff;
-    transition: background-color 0.3s ease;
-}
-
-.theme-toggle:hover {
-    background-color: #3700b3;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3);
+  margin-bottom: var(--space-6);
+  /* lighten header bar a bit more for contrast */
+  background: color-mix(in srgb, var(--bg-elev), white 8%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(6px);
 }
 
 .language-switcher {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
 }
 
 .flag {
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
-/* Заголовки */
-h2 {
-    margin: 20px 0;
-    font-size: 24px;
-    text-align: center;
-    color: #333;
+/* Icon button */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+.icon-button:hover { background: color-mix(in srgb, var(--card), transparent 70%); }
+.icon-button:active { transform: scale(0.98); }
+.icon-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Lighter buttons specifically in the header (settings bar) */
+.settings .icon-button {
+  background: color-mix(in srgb, var(--bg-elev), white 12%);
+  border-color: color-mix(in srgb, var(--border), white 18%);
+}
+.settings .icon-button:hover {
+  background: color-mix(in srgb, var(--bg-elev), white 18%);
 }
 
-/* Уведомление */
+/* Improve icon visibility in dark theme */
+body.dark-theme .icon-button {
+  background: #242424;
+  border-color: #4a4a4a;
+  color: #fafafa;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 6px 16px rgba(0,0,0,0.35);
+}
+body.dark-theme .icon-button:hover { background: #2a2a2a; color: var(--accent); border-color: color-mix(in srgb, var(--accent), #000 35%); }
+body.dark-theme #theme-toggle:hover .theme-icon { color: var(--accent); }
+
+/* Theme toggle icon states */
+.theme-icon { color: var(--text); display: block; width: 24px; height: 24px; }
+/* Use !important to override inline style="display:none" on the moon path */
+body.dark-theme .sun-icon { display: none !important; }
+body.dark-theme .moon-icon { display: block !important; }
+body.light-theme .sun-icon { display: block !important; }
+body.light-theme .moon-icon { display: none !important; }
+
+/* Force visible, high-contrast theme icon in dark theme */
+body.dark-theme #theme-toggle .theme-icon {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.6));
+}
+body.dark-theme #theme-toggle .theme-icon .moon-icon {
+  stroke: currentColor !important;
+  stroke-width: 2.2 !important;
+  fill: currentColor !important;
+}
+body.light-theme #theme-toggle .theme-icon {
+  color: #1b1f24;
+}
+
+/* QR button icon inherits color; ensure good contrast in dark */
+body.dark-theme #qr-button .qr-icon { color: #f5f5f5; }
+
+/* Headings */
+#payment-methods-title, #contact-title {
+  font-size: clamp(1.2rem, 2.4vw + 0.6rem, 1.6rem);
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+}
+
+/* Center the main title */
+#payment-methods-title { text-align: center; }
+
+/* Notification */
 .notification {
-    background-color: #e0e0e0;
-    color: #333;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center content horizontally */
+  width: 100%;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-6);
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent), var(--bg) 80%);
+  border: 1px solid color-mix(in srgb, var(--accent), var(--border) 70%);
+  border-radius: 999px;
+  text-align: center; /* center multi-line text */
+  line-height: 1.4;
+  min-height: calc(1.4em * 2 + var(--space-3) * 2); /* exact 2-line height incl. vertical padding */
+  max-height: calc(1.4em * 2 + var(--space-3) * 2);
+  overflow: hidden; /* prevent jump when text longer than 2 lines */
 }
 
-/* Стили для платежных методов */
+/* Payment card */
 .payment-method {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  /* Desktop: располагать инфо и кнопки в одну строку */
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
 }
 
 .payment-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  /* Пусть инфоблок занимает всё доступное пространство слева */
+  flex: 1 1 auto;
 }
 
 .payment-image {
-    flex-shrink: 0;
-    margin-right: 20px;
+  flex: 0 0 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .payment-image img {
-    max-width: 120px;
+  width: 88px;
+  height: 88px; /* make square for perfect circle */
+  border-radius: 50%;
+  object-fit: cover; /* fill circle nicely */
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
 }
 
 .payment-details {
-    flex-grow: 1;
+  flex: 1 1 auto;
+  min-width: 0; /* prevent overflow and keep row layout tight */
+}
+.payment-details p { margin: 0 0 var(--space-2); color: var(--text-muted); }
+.payment-details strong { color: var(--text); font-weight: 600; }
+
+/* Enable wrapping for long, unbroken strings (e.g., wallet addresses) */
+.payment-details span {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-/* Кнопки */
+/* Specifically ensure TRC20 wallet breaks on small screens */
+#binance-wallet {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
 .payment-buttons {
-    display: flex;
-    min-width: 200px;
-    flex-direction: column; /* Горизонтальное расположение по умолчанию */
-    gap: 10px;
-    justify-content: flex-end; /* Выравнивание кнопок справа */
+  display: flex;
+  gap: var(--space-3);
+  /* На десктопе прижимаем кнопки вправо */
+  margin-top: 0;
+  margin-left: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-button {
-    background-color: #3b3b3b;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+/* Buttons */
+.copy-button, .open-button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-elev), var(--bg) 20%);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  /* Одинаковая ширина кнопок на десктопе */
+  flex: 0 0 160px;
+  justify-content: center;
+  white-space: nowrap;
+}
+.copy-button:hover, .open-button:hover {
+  background: color-mix(in srgb, var(--bg-elev), var(--bg) 10%);
+}
+.copy-button:active, .open-button:active { transform: translateY(1px); }
+.copy-button:focus-visible, .open-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Boost contrast for copy button in dark theme */
+body.dark-theme .copy-button {
+  background: #2b2b2b;
+  border-color: #4a4a4a;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 4px 12px rgba(0,0,0,0.25);
+}
+body.dark-theme .copy-button:hover { background: #343434; border-color: color-mix(in srgb, var(--accent), #000 45%); }
+
+/* Button icons via data-URI SVG */
+.copy-button::before {
+  content: "";
+  width: 16px; height: 16px;
+  background: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>') center / contain no-repeat;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>') center / contain no-repeat;
 }
 
-button:hover {
-    background-color: #3700b3;
-    transform: translateY(-2px);
+.open-button::before {
+  content: "";
+  width: 16px; height: 16px;
+  background: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>') center / contain no-repeat;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>') center / contain no-repeat;
 }
 
-/* Модальное окно */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow: hidden;
+.open-button {
+  background: var(--accent);
+  border-color: color-mix(in srgb, var(--accent), black 25%);
+  color: var(--accent-contrast);
 }
+.open-button:hover { filter: brightness(1.05); }
+.open-button:active { filter: brightness(0.98); }
 
-.modal-content {
-    margin: auto;
-    width: 40%;
-    height: auto;
-    overflow: hidden;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 2px solid #3b3b3b; /* Цвет и ширина рамки */
-    border-radius: 5px; /* Закругление углов рамки */
-}
-
-.modal-content::-webkit-scrollbar {
-    width: 0;
-}
-
-.modal-content {
-    scrollbar-width: none;
-}
-
-/* Темная тема */
-body.dark-theme {
-    background-color: #121212ce;
-    color: #ffffff;
-}
-
-body.dark-theme .payment-method {
-    background-color: #1e1e1e74;
-}
-
-body.dark-theme .notification {
-    background-color: #333;
-    color: #fff;
-}
-
-body.dark-theme h2 {
-    color: #fff;
-}
-
-body.dark-theme .modal-content {
-    background-color: transparent;
-    color: #ffffff;
-}
-
-/* Светлая тема */
-body.light-theme {
-    background-color: #f0f0f0;
-    color: #000000;
-}
-
-body.light-theme .payment-method {
-    background-color: #ffffff;
-}
-
-body.light-theme .notification {
-    background-color: #e0e0e0;
-    color: #333;
-}
-
-body.light-theme h2 {
-    color: #333;
-}
-
-/* Мобильные стили */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 80%;
-    }
-
-    .payment-method {
-        flex-direction: column; /* Вертикальное расположение блоков */
-        align-items: center;
-    }
-
-    .payment-buttons {
-        flex-direction: column; /* Вертикальное расположение кнопок на мобильных */
-        justify-content: center;
-        width: 100%;
-        margin-top: 10px;
-    }
-}
-
-/* Стили для блока контактов */
+/* Contact card */
 .contact-info {
-    margin-top: 30px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow);
+}
+.contact-info p { margin: 0 0 var(--space-2); color: var(--text-muted); }
+.contact-info a { color: var(--accent); text-decoration: none; }
+.contact-info a:hover { text-decoration: underline; }
+
+/* Icons for contact links */
+#phone-number, #telegram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+#phone-number::before, #telegram-link::before {
+  content: "";
+  width: 16px; height: 16px;
+  background: currentColor;
+}
+#phone-number::before {
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.3 1.77.56 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.08a2 2 0 0 1 2.11-.45c.83.26 1.7.44 2.6.56A2 2 0 0 1 22 16.92z"/></svg>') center / contain no-repeat;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.3 1.77.56 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.08a2 2 0 0 1 2.11-.45c.83.26 1.7.44 2.6.56A2 2 0 0 1 22 16.92z"/></svg>') center / contain no-repeat;
+}
+#telegram-link::before {
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>') center / contain no-repeat;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>') center / contain no-repeat;
 }
 
-.contact-info h2 {
-    text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 15px;
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  z-index: 2000; /* перекрывает хедер и прочие элементы */
+}
+.modal.show { display: flex; }
+
+.modal-content {
+  background: #ffffff; /* ensure high contrast for QR scanning */
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: var(--space-5);
+  max-width: min(92vw, 560px);
 }
 
-.contact-info p {
-    margin: 5px 0;
-    font-size: 14px;
-    text-align: center; /* Выравнивание текста по центру */
+#qr-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #ffffff; /* white backdrop behind transparent PNGs */
 }
 
-/* Стили для ссылок в контактной информации */
-.contact-info a {
-    color: #3c3ca1;
-    text-decoration: none; /* Убираем подчеркивание */
+/* Links and Interactive */
+a { color: var(--accent); }
+a:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .container { max-width: 840px; }
 }
 
-.contact-info a:hover {
-    text-decoration: underline; /* Подчеркивание при наведении */
-}
-
-/* Стили для блока контактов в тёмной теме */
-.dark-theme .contact-info {
-    background-color: #1e1e1e8b; /* Цвет фона для тёмной темы */
-    border-color: #4a4a4a; /* Цвет границы для тёмной темы */
-}
-
-.dark-theme .contact-info h2,
-.dark-theme .contact-info p {
-    color: #ffffff; /* Цвет текста для заголовка и параграфов в тёмной теме */
-}
-
-/* Для блоков с длинным текстом */
-.payment-details span {
-    display: inline-block;
-    max-width: 100%;  /* Ограничиваем ширину блока */
-    overflow: hidden; /* Скрываем содержимое, выходящее за пределы блока */
-    text-overflow: ellipsis; /* Добавляем многоточие при переполнении */
-    white-space: nowrap; /* Отключаем перенос строки */
-}
-
-/* Альтернативный вариант для переноса текста */
-.payment-details span {
-    word-wrap: break-word; /* Позволяет тексту переноситься на новую строку */
-}
-
-/* Специально для номера кошелька TRC20 */
-.payment-details #binance-wallet {
-    font-size: 14px;
-    word-wrap: break-word;
-}
-
-/* Для мобильных устройств */
 @media (max-width: 768px) {
-    .payment-details span {
-        white-space: normal; 
-        word-break: break-word; 
-    }
+  .container { padding: var(--space-6) var(--space-4); }
+
+  .settings {
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+  /* Мобильная версия: карточка снова блочная, кнопки снизу */
+  .payment-method { display: block; }
+  .payment-info { flex-direction: row; align-items: center; flex-wrap: nowrap; }
+  .payment-image { flex-basis: auto; }
+  .payment-image img { width: 72px; height: 72px; }
+
+  .payment-buttons { width: 100%; flex-direction: row; align-items: stretch; margin-top: var(--space-4); margin-left: 0; }
+  .copy-button, .open-button { flex: 1 1 auto; min-width: 140px; }
 }
 
-/* Новая секция для экранов меньше 310px */
-@media (max-width: 440px) {
-    
-    .settings {
-        flex-direction: column; /* Изменение направления флекса на вертикальное */
-        align-items: center; /* Центрирование элементов по оси Y */
-    }
-
-    .language-switcher, 
-    .theme-toggle,
-    .qr-button {
-        width: 100%; /* Установка ширины на 100% */
-        padding-top: 20px; /* Отступ сверху */
-        margin-bottom: 10px; /* Отступ снизу */
-        display: flex; /* Включение флекс-бокса */
-        justify-content: space-between; /* Разделение элементов с пространством между ними */
-        align-items: center; /* Центрирование элементов по оси Y */
-    }
-    .flag {
-        width: 80px;
-        height: 40px;
-      }
+@media (max-width: 480px) {
+  .container { padding: var(--space-5) var(--space-3); }
+  .icon-button { width: 36px; height: 36px; }
+  .payment-image img { width: 64px; height: 64px; }
+  .notification { width: 100%; justify-content: center; text-align: center; }
 }
 
+/* Toast-style notification for small screens */
+@media (max-width: 768px) {
+  .notification {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 8px);
+    left: 50%;
+    transform: translate(-50%, -120%);
+    opacity: 0;
+    width: calc(100% - 24px);
+    max-width: 560px;
+    margin: 0; /* remove layout gap */
+    border-radius: 14px;
+    background: rgba(30, 30, 30, 0.6); /* translucent glass */
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    backdrop-filter: blur(14px) saturate(120%);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.06) inset;
+    z-index: 1000;
+    pointer-events: none;
+    min-height: auto; /* use content height for toast */
+    max-height: none;
+  }
+
+  .notification.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    pointer-events: auto;
+    transition: transform 240ms ease, opacity 240ms ease;
+  }
+
+  /* Close button inside toast */
+  .notification .toast-close {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff;
+    background: rgba(255,255,255,0.06);
+  }
+  .notification .toast-close::before {
+    content: "";
+    width: 14px; height: 14px;
+    background: currentColor;
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>') center / contain no-repeat;
+            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>') center / contain no-repeat;
+  }
+  .notification .toast-close:active { transform: scale(0.96); }
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
