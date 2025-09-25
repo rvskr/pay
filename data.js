@@ -11,7 +11,7 @@ const paymentData = {
       values: { number: '4441 1110 6846 4548', url: 'https://send.monobank.ua/AaWsPtYJK3' },
       fields: [
         { label: { ru: "Имя получателя:", ua: "Ім'я отримувача:", en: 'Recipient:' }, value: { ru: 'Роман Р.', ua: 'Роман Р.', en: 'Roman R.' } },
-        { label: { ru: 'Номер карты:', ua: 'Номер картки:', en: 'Card number:' }, valueFrom: 'number' }
+        { label: { ru: 'Карта:', ua: 'Картка:', en: 'Card:' }, valueFrom: 'number' }
       ],
       actions: { copyFrom: 'number', openFrom: 'url' }
     },
@@ -23,7 +23,7 @@ const paymentData = {
       values: { number: '4149 4390 2762 3200', url: 'https://www.privat24.ua/send/dp8a1' },
       fields: [
         { label: { ru: "Имя получателя:", ua: "Ім'я отримувача:", en: 'Recipient:' }, value: { ru: 'Роман Р.', ua: 'Роман Р.', en: 'Roman R.' } },
-        { label: { ru: 'Номер карты:', ua: 'Номер картки:', en: 'Card number:' }, valueFrom: 'number' }
+        { label: { ru: 'Карта:', ua: 'Картка:', en: 'Card:' }, valueFrom: 'number' }
       ],
       actions: { copyFrom: 'number', openFrom: 'url' }
     },
@@ -35,7 +35,7 @@ const paymentData = {
       values: { number: '4323 3473 7699 5392', url: 'https://pay.a-bank.com.ua/card/35xfUu4sUzXgJxA6' },
       fields: [
         { label: { ru: "Имя получателя:", ua: "Ім'я отримувача:", en: 'Recipient:' }, value: { ru: 'Роман Р.', ua: 'Роман Р.', en: 'Roman R.' } },
-        { label: { ru: 'Номер карты:', ua: 'Номер картки:', en: 'Card number:' }, valueFrom: 'number' }
+        { label: { ru: 'Карта:', ua: 'Картка:', en: 'Card:' }, valueFrom: 'number' }
       ],
       actions: { copyFrom: 'number', openFrom: 'url' }
     },

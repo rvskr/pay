@@ -52,6 +52,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* нижний отступ под док с мини-иконками */
+  padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
 }
 
 img { display: block; max-width: 100%; height: auto; }
@@ -456,6 +458,77 @@ a:hover { text-decoration: underline; }
             mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>') center / contain no-repeat;
   }
   .notification .toast-close:active { transform: scale(0.96); }
+}
+
+/* Bottom dock with mini payment icons */
+#bottom-dock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1500;
+  background: color-mix(in srgb, var(--bg-elev), rgba(20,20,20,0.65) 30%);
+  backdrop-filter: blur(12px) saturate(120%);
+  border-top: 1px solid var(--border);
+}
+
+#bottom-dock .dock-list {
+  display: flex;
+  gap: 10px;
+  padding: 8px 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  justify-content: center; /* центрируем, пока есть место */
+}
+
+#bottom-dock .dock-item {
+  flex: 0 0 auto;
+}
+
+#bottom-dock .dock-btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card), transparent 25%);
+  border-radius: 999px;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 120ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+#bottom-dock .dock-btn:hover { background: color-mix(in srgb, var(--card), transparent 10%); }
+#bottom-dock .dock-btn:active { transform: scale(0.98); }
+#bottom-dock .dock-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+#bottom-dock .dock-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+}
+
+#bottom-dock .dock-title {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+#bottom-dock .dock-safe-area-spacer {
+  width: 100%;
+  height: env(safe-area-inset-bottom, 0px);
+}
+
+/* Более компактный док на очень маленьких экранах */
+@media (max-width: 480px) {
+  body { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
+  #bottom-dock .dock-logo { width: 24px; height: 24px; }
+  #bottom-dock .dock-title { display: none; }
+  #bottom-dock .dock-list { padding: 6px 8px; gap: 8px; }
 }
 
 /* Motion preferences */

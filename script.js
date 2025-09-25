@@ -79,6 +79,8 @@ function renderPaymentMethods() {
 
         const card = document.createElement('div');
         card.className = 'payment-method';
+        // Присваиваем устойчивый id для навигации из нижнего дока
+        card.id = `pm-${item.key}`;
 
         const info = document.createElement('div');
         info.className = 'payment-info';
@@ -154,6 +156,69 @@ function renderPaymentMethods() {
     });
 }
 
+// Рендер нижнего дока с мини-иконками платежных методов
+function renderBottomDock() {
+    const dockList = document.getElementById('bottom-dock-list');
+    if (!dockList || typeof paymentData === 'undefined') return;
+
+    // Очистить и перерисовать, чтобы соответствовать текущему языку
+    dockList.innerHTML = '';
+
+    paymentData.paymentMethods.forEach((item) => {
+        const li = document.createElement('div');
+        li.className = 'dock-item';
+
+        const btn = document.createElement('button');
+        btn.className = 'dock-btn';
+        btn.type = 'button';
+        btn.title = (item.title && item.title[currentLanguage]) || item.alt || item.key;
+
+        const img = document.createElement('img');
+        img.className = 'dock-logo';
+        img.src = item.logo || '';
+        img.alt = item.alt || item.key;
+        // После загрузки изображения пересчитаем выравнивание
+        img.addEventListener('load', adjustBottomDockAlignment, { once: true });
+        btn.appendChild(img);
+
+        // Подпись, скрывается на очень узких экранах стилями
+        const span = document.createElement('span');
+        span.className = 'dock-title';
+        span.textContent = (item.title && item.title[currentLanguage]) || item.key;
+        btn.appendChild(span);
+
+        btn.addEventListener('click', () => {
+            const target = document.getElementById(`pm-${item.key}`);
+            if (target) {
+                // Плавная прокрутка к карточке
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Временная подсветка для фокусировки внимания
+                const prevBoxShadow = target.style.boxShadow;
+                target.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--accent), #000 20%)';
+                setTimeout(() => { target.style.boxShadow = prevBoxShadow; }, 900);
+            }
+        });
+
+        li.appendChild(btn);
+        dockList.appendChild(li);
+    });
+
+    // После рендера настроим выравнивание
+    adjustBottomDockAlignment();
+}
+
+// Центрируем иконки, если нет переполнения; иначе — выравниваем слева, сохраняя прокрутку
+function adjustBottomDockAlignment() {
+    const dockList = document.getElementById('bottom-dock-list');
+    if (!dockList) return;
+    // Если контент шире контейнера — включаем выравнивание слева
+    if (dockList.scrollWidth > dockList.clientWidth + 1) {
+        dockList.style.justifyContent = 'flex-start';
+    } else {
+        dockList.style.justifyContent = 'center';
+    }
+}
+
 function initializeTranslations() {
     // Проверяем, что переводы загружены
     if (typeof translations === 'undefined') {
@@ -175,6 +240,8 @@ function initializeTranslations() {
 
     // Рендер способов оплаты (динамически)
     renderPaymentMethods();
+    // Рендер нижнего дока мини-иконок
+    renderBottomDock();
 
     // Блок контактов
     document.getElementById('contact-title').innerText = getTranslation(currentLanguage, 'contact');
@@ -406,6 +473,16 @@ function safeInitialize() {
     // Все готово, запускаем инициализацию
     initializePage();
     removeFocusFromButtons();
+
+    // Пересчитывать выравнивание дока при ресайзе окна (RAF-дебаунс)
+    let _dockAdjustRaf = null;
+    window.addEventListener('resize', () => {
+        if (_dockAdjustRaf) cancelAnimationFrame(_dockAdjustRaf);
+        _dockAdjustRaf = requestAnimationFrame(() => {
+            adjustBottomDockAlignment();
+            _dockAdjustRaf = null;
+        });
+    });
 }
 
 // Вызов безопасной инициализации
