@@ -44,7 +44,7 @@ const paymentData = {
       title: { ru: 'Binance Pay', ua: 'Binance Pay', en: 'Binance Pay' },
       logo: 'img/binance.png',
       alt: 'Binance',
-      values: { id: '97301846', url: 'https://app.binance.com/qr/dplk301e6768b4e44413a7c276b28c03920a' },
+      values: { id: '97301846', url: 'https://app.binance.com/uni-qr/DSKD2zJU' },
       fields: [
         { label: { ru: 'ID:', ua: 'ID:', en: 'ID:' }, valueFrom: 'id' }
       ],
